@@ -12,6 +12,12 @@ extension String {
     }
 }
 
+
+@inlinable public func stride<T>(_ start: T, _ end: T, _ by: T.Stride) -> StrideTo<T>  {
+    return stride(from: start, to: end, by: by)
+}
+
 let a = "ABC"
 
-a[stride(from: 0, to: 3, by: 1)]
+a[stride(0, 3, 1)]
+
