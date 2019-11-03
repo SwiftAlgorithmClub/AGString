@@ -45,4 +45,8 @@ class AGStringTests: XCTestCase {
 
     }
     
+    func testFailRange() {
+        var str = "Hello, World!"
+        XCTAssert(str[0..<100] == "Hello, World!")
+    }
 }
