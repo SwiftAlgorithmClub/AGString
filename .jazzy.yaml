@@ -1,0 +1,7 @@
+# AGString document generator jazzy settings
+
+copyright: Copyright 2019 AGString
+author: AGString
+xcodebuild_arguments: [-target, AGString-iOS]
+clean: true
+output: ./Documentation
