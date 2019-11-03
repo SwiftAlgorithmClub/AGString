@@ -17,7 +17,7 @@ class AGStringTests: XCTestCase {
     
     func testExample() {
         var str = "Hello, World!"
-
+ 
         XCTAssert(str[1] == "e")
         XCTAssert(str[1..<3] == "el")
         XCTAssert(str[7...9] == "Wor")
@@ -42,7 +42,21 @@ class AGStringTests: XCTestCase {
 
         str[...3] = "Goodbye"
         XCTAssert(str == "Goodbye Gold!!!")
-
     }
-    
+
+    func testZfill() {
+        let str = "abc"
+
+        let str2 = str.zfill(totalLength: 2)
+        XCTAssert(str2 == "abc")
+
+        let str3 = str.zfill(totalLength: 3)
+        XCTAssert(str3 == "abc")
+
+        let str4 = str.zfill(totalLength: 10)
+        XCTAssert(str4 == "0000000abc")
+
+        let str5 = str.zfill(with: "x", totalLength: 10)
+        XCTAssert(str5 == "xxxxxxxabc")
+    }
 }
