@@ -24,6 +24,7 @@
 		3D9C433422746323000A6585 /* AGString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; };
 		3D9C433522746323000A6585 /* AGString.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		3DB91AC4229AC263002668DA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
 		BDB3A5A1236EF1B30041D167 /* AGRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegex.swift; sourceTree = "<group>"; };
+		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 		BDB3A59F236EF19B0041D167 /* String */ = {
 			isa = PBXGroup;
 			children = (
+				FF5EFC82236EF301005134D1 /* StringIndex.swift */,
 				3D9C42A122745900000A6585 /* AGString.swift */,
 			);
 			path = String;
@@ -652,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
 				BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */,
 			);
