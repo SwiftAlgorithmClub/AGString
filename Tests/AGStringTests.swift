@@ -47,16 +47,16 @@ class AGStringTests: XCTestCase {
     func testZfill() {
         let str = "abc"
 
-        let str2 = str.zfill(totalLength: 2)
+        let str2 = str.zfill(2)
         XCTAssert(str2 == "abc")
 
-        let str3 = str.zfill(totalLength: 3)
+        let str3 = str.zfill(3)
         XCTAssert(str3 == "abc")
 
-        let str4 = str.zfill(totalLength: 10)
+        let str4 = str.zfill(10)
         XCTAssert(str4 == "0000000abc")
 
-        let str5 = str.zfill(with: "x", totalLength: 10)
+        let str5 = str.zfill(10, with: "x")
         XCTAssert(str5 == "xxxxxxxabc")
     }
 }

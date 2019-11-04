@@ -9,13 +9,24 @@
 import Foundation
 
 extension String {
-    func zfill(with character: Character = "0", totalLength length: Int) -> String {
+    public enum ZFillDirection {
+        case left
+        case right
+    }
+    public func zfill(_ length: Int, with character: Character = "0", direction dir: ZFillDirection = .left) -> String {
         let lengthToNeed = length - self.count
 
         if lengthToNeed <= 0 {
             return self
         } else {
-            return String(repeating: character, count: lengthToNeed) + self
+
+            let str = String(repeating: character, count: lengthToNeed)
+            switch dir {
+            case .left:
+                return str + self
+            case .right:
+                return self + str
+            }
         }
     }
 }
