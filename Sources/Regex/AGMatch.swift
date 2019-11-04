@@ -12,9 +12,15 @@ typealias AGSpan = (Int, Int)
 struct AGMatch {
     let start: Int
     let end: Int
-    let spacn: (AGSpan)
     let base: String
     private let groups: [String]
+
+    public init(start: Int, end: Int, base: String, groups: [String]) {
+        self.start = start
+        self.end = end
+        self.base = base
+        self.groups = groups
+    }
 }
 
 extension AGMatch {
@@ -24,8 +30,17 @@ extension AGMatch {
     func group(_ index: Int) -> String {
         return ""
     }
-    
+
     func group() -> String {
         return ""
+    }
+    var span: AGSpan {
+        return (start, end)
+    }
+}
+
+extension AGMatch: Sequence {
+    __consuming func makeIterator() -> AGMatchIterator {
+        return AGMatchIterator()
     }
 }

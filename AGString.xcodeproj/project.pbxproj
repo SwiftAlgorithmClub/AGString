@@ -28,6 +28,7 @@
 		BD02777823701DB4007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
 		BD02777923701DB7007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
 		BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		BDDA016223703F820001AF7C /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		BD02777323701C86007DCFB6 /* AGMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatch.swift; sourceTree = "<group>"; };
 		BD02777523701DA2007DCFB6 /* AGRegexTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegexTest.swift; sourceTree = "<group>"; };
 		BDB3A5A1236EF1B30041D167 /* AGRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegex.swift; sourceTree = "<group>"; };
+		BDDA016123703F820001AF7C /* AGMatchIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchIterator.swift; sourceTree = "<group>"; };
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,6 +278,7 @@
 			children = (
 				BDB3A5A1236EF1B30041D167 /* AGRegex.swift */,
 				BD02777323701C86007DCFB6 /* AGMatch.swift */,
+				BDDA016123703F820001AF7C /* AGMatchIterator.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4F190C236F126000A0CD30 /* Utility.swift in Sources */,
+				BDDA016223703F820001AF7C /* AGMatchIterator.swift in Sources */,
 				FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */,
 				BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
