@@ -35,7 +35,7 @@ class AGRegexTest: XCTestCase {
         let regex = AGRegex("ai")
         let str = "The rain in Spain"
         let actual = regex.last
-        let expect = AGMatch(start: 5, end: 7, base: str, groups: [])
+        let expect = AGMatch(start: 14, end: 16, base: str, groups: [])
         XCTAssertEqual(actual, expect)
     }
     
