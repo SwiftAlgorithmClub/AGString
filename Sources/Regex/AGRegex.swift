@@ -8,3 +8,11 @@
 
 @_exported import Foundation
 
+class AGRegex {
+    
+    private let pattern: String
+    
+    init(pattern: String) {
+        self.pattern = pattern
+    }
+}

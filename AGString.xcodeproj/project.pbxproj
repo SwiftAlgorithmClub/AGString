@@ -23,6 +23,7 @@
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* AGString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; };
 		3D9C433522746323000A6585 /* AGString.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
 		BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
@@ -102,6 +103,7 @@
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB91AC4229AC263002668DA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
+		BD02777323701C86007DCFB6 /* AGMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatch.swift; sourceTree = "<group>"; };
 		BDB3A5A1236EF1B30041D167 /* AGRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegex.swift; sourceTree = "<group>"; };
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB3A5A1236EF1B30041D167 /* AGRegex.swift */,
+				BD02777323701C86007DCFB6 /* AGMatch.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 			files = (
 				FF4F190C236F126000A0CD30 /* Utility.swift in Sources */,
 				FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */,
+				BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
 				BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */,
 			);
