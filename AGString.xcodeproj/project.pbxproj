@@ -24,6 +24,9 @@
 		3D9C433422746323000A6585 /* AGString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; };
 		3D9C433522746323000A6585 /* AGString.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		BD02777723701DAE007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
+		BD02777823701DB4007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
+		BD02777923701DB7007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
 		BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
@@ -104,6 +107,7 @@
 		3DB91AC4229AC263002668DA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
 		BD02777323701C86007DCFB6 /* AGMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatch.swift; sourceTree = "<group>"; };
+		BD02777523701DA2007DCFB6 /* AGRegexTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegexTest.swift; sourceTree = "<group>"; };
 		BDB3A5A1236EF1B30041D167 /* AGRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegex.swift; sourceTree = "<group>"; };
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				3D9C42EC22745FDA000A6585 /* LinuxMain.swift */,
 				3D9C42D722745CDE000A6585 /* AGStringTests.swift */,
+				BD02777523701DA2007DCFB6 /* AGRegexTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777723701DAE007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C42FC22746078000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777823701DB4007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C430C22746131000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777923701DB7007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C431C227461AF000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
