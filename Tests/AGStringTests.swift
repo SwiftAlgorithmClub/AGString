@@ -70,4 +70,42 @@ class AGStringTests: XCTestCase {
             str2.occurence(of: "a")
         }
     }
+
+    func testLtrim() {
+
+        XCTAssert("     abcd    ".trimLeft() == "abcd    ")
+        XCTAssert("    abcd".trimLeft() == "abcd")
+        XCTAssert("".trimLeft() == "")
+        XCTAssert("abcd    ".trimLeft() == "abcd    ")
+        XCTAssert("Hello, World!".trimLeft() == "Hello, World!")
+        let str = "                                                                             a"
+        measure {
+            str.trimLeft()
+        }
+    }
+
+    func testRtrim() {
+
+        XCTAssert("    abcd    ".trimRight() == "    abcd")
+        XCTAssert("    abcd".trimRight() == "    abcd")
+        XCTAssert("".trimRight() == "")
+        XCTAssert("abcd    ".trimRight() == "abcd")
+        XCTAssert("Hello, World!".trimRight() == "Hello, World!")
+        let str = "a                                                                             "
+        measure {
+            str.trimRight()
+        }
+    }
+
+    func testTrim() {
+        XCTAssert("    abcd    ".trim() == "abcd")
+        XCTAssert("    abcd".trim() == "abcd")
+        XCTAssert("".trim() == "")
+        XCTAssert("abcd    ".trim() == "abcd")
+        XCTAssert("Hello, World!".trim() == "Hello, World!")
+        let str = "                                           a                                  "
+        measure {
+            str.trim()
+        }
+    }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - ZFill
 extension String {
     public enum ZFillDirection {
         case left
@@ -32,6 +33,7 @@ extension String {
 
 }
 
+// MARK: - occurence counting
 extension String {
 
     public func occurence(of str: String) -> Int {
@@ -95,5 +97,48 @@ extension String {
         }
 
         return result
+    }
+}
+
+// MARK: - trimming(left,right,both)
+extension String {
+    public func trimLeft() -> String {
+        if self.isEmpty {
+            return ""
+        }
+
+        var cursor = 0
+
+        while cursor < self.count, self[cursor].isWhitespace {
+            cursor += 1
+        }
+
+        if cursor == self.count {
+            return ""
+        } else {
+            return self[cursor...]
+        }
+    }
+
+    public func trimRight() -> String {
+        if self.isEmpty {
+            return ""
+        }
+
+        var cursor = self.count-1
+
+        while cursor >= 0, self[cursor].isWhitespace {
+            cursor -= 1
+        }
+
+        if cursor < 0 {
+            return ""
+        } else {
+            return self[...cursor]
+        }
+    }
+
+    public func trim() -> String {
+        return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }
