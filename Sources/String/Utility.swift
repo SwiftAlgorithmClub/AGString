@@ -40,8 +40,8 @@ extension String {
 
         var result = 0
 
-        // pi[i] = N의 길이가 i인 접두사의 접두사도 되고 접미사도 되는 문자열의 최대 길이
-        let partial: [Int] = str.getPartialMatch()
+        // partial[i] = N의 길이가 i인 접두사의 접두사도 되고 접미사도 되는 문자열의 최대 길이
+        let partial: [Int] = str.partial()
 
         var begin = 0
         var matched = 0
@@ -70,7 +70,7 @@ extension String {
         return result
     }
 
-    fileprivate func getPartialMatch() -> [Int] {
+    fileprivate func partial() -> [Int] {
         let length = self.count
         var result = Array(repeating: 0, count: length)
 
@@ -78,7 +78,7 @@ extension String {
         var matched = 0
 
         while begin + matched < length {
-            let postfixIndex = self.index(startIndex, offsetBy: begin+matched)
+            let postfixIndex = self.index(startIndex, offsetBy: begin + matched)
             let prefixIndex = self.index(startIndex, offsetBy: matched)
 
             if self[prefixIndex] == self[postfixIndex] {
