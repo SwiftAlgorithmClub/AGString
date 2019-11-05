@@ -59,4 +59,15 @@ class AGStringTests: XCTestCase {
         let str5 = str.zfill(10, with: "x")
         XCTAssert(str5 == "xxxxxxxabc")
     }
+
+    func testOccurence() {
+        let str = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+        XCTAssert(str.occurence(of: " ") == 68)
+
+        let str2 = String(repeating: "a", count: 1000)
+        measure {
+            str2.occurence(of: "a")
+        }
+    }
 }
