@@ -25,10 +25,14 @@ struct AGMatch {
 
 extension AGMatch {
     var groupCount: Int {
-        return 0
+        return groups.count
     }
     func group(_ index: Int) -> String {
-        return ""
+        guard index < groups.count else {
+            return ""
+        }
+
+        return groups[index]
     }
 
     func group() -> String {

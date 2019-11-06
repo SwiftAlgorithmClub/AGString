@@ -42,8 +42,14 @@ extension AGRegex {
                                          range: NSRange(location: 0, length: str.count))
 
              matchResult = matched.map {
-                 AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
-                         base: str, groups: [])
+                var group: [String] = []
+
+                for index in 1 ..< $0.numberOfRanges {
+                    group.append(str[$0.range(at: index)])
+                }
+
+                return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
+                         base: str, groups: group)
             }
 
             return matchResult ?? []
