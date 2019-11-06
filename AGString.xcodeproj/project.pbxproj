@@ -31,6 +31,7 @@
 		BDDA016223703F820001AF7C /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		BDDA016123703F820001AF7C /* AGMatchIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchIterator.swift; sourceTree = "<group>"; };
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
+		FF6C86D12372D77B004C83A0 /* String+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSRange.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 				BDB3A5A1236EF1B30041D167 /* AGRegex.swift */,
 				BD02777323701C86007DCFB6 /* AGMatch.swift */,
 				BDDA016123703F820001AF7C /* AGMatchIterator.swift */,
+				FF6C86D12372D77B004C83A0 /* String+NSRange.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */,
 				BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
+				FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */,
 				BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

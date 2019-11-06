@@ -26,7 +26,7 @@ class AGRegexTest: XCTestCase {
     func testFirstMatch() {
         let regex = AGRegex("ai")
         let str = "The rain in Spain"
-        let actual = regex.first
+        let actual = regex.first(str)
         let expect = AGMatch(start: 5, end: 7, base: str, groups: [])
         XCTAssertEqual(actual, expect)
     }
@@ -34,7 +34,7 @@ class AGRegexTest: XCTestCase {
     func testLastMatch() {
         let regex = AGRegex("ai")
         let str = "The rain in Spain"
-        let actual = regex.last
+        let actual = regex.last(str)
         let expect = AGMatch(start: 14, end: 16, base: str, groups: [])
         XCTAssertEqual(actual, expect)
     }

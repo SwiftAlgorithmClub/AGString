@@ -11,7 +11,16 @@
 class AGRegex {
     
     private let pattern: String
-    
+    private var matchResult: [AGMatch]?
+
+    private var regex: NSRegularExpression? {
+        do {
+            return try NSRegularExpression(pattern: pattern)
+        } catch {
+            return nil
+        }
+    }
+
     init(_ pattern: String) {
         self.pattern = pattern
     }
@@ -20,14 +29,41 @@ class AGRegex {
 extension AGRegex {
     
     func findAll(_ str: String) -> [AGMatch] {
-        return []
+
+        guard let regex = self.regex else {
+            return []
+        }
+
+        if let result = matchResult {
+            return result
+        } else {
+            let matched = regex.matches(in: str,
+                                         options: [],
+                                         range: NSRange(location: 0, length: str.count))
+
+             matchResult = matched.map {
+                 AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
+                         base: str, groups: [])
+            }
+
+            return matchResult ?? []
+        }
     }
 
-    var first: AGMatch? {
-        return nil
+    func first(_ str: String) -> AGMatch? {
+        guard let result = matchResult?.first else {
+            return self.findAll(str).first
+        }
+
+        return result
     }
-    var last: AGMatch? {
-        return nil
+
+    func last(_ str: String) -> AGMatch? {
+        guard let result = matchResult?.last else {
+            return self.findAll(str).last
+        }
+
+        return result
     }
 
     func sub(str: String, replace: String, count: Int = Int.max) -> String {
