@@ -12,7 +12,6 @@ class AGRegex {
 
     private var regex: NSRegularExpression
 
-
     init(_ regex: NSRegularExpression) {
         self.regex = regex
     }
@@ -63,10 +62,23 @@ extension AGRegex {
     }
 
     func sub(str: String, replace: String, count: Int = Int.max) -> String {
-        return ""
+        var result = str
+        var replacingCount = count
+
+        while replacingCount > 0, let matched = regex.firstMatch(
+                            in: result,
+                            options: [],
+                            range: NSRange(location: 0, length: result.count)) {
+            result.replaceSubrange(
+                result.range(with: matched.range),
+                with: replace)
+            replacingCount -= 1
+        }
+
+        return result
     }
 
-    func finditer(_ str: String) -> AGMatch {
-        return AGMatch(start: 0, end: 0, base: "", groups: [])
+    func finditer(_ str: String) -> IndexingIterator<[AGMatch]> {
+        return self.findAll(str).makeIterator()
     }
 }
