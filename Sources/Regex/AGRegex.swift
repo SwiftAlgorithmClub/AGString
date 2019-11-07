@@ -11,7 +11,6 @@
 class AGRegex {
     
     private let pattern: String
-    private var matchResult: [AGMatch]?
 
     private var regex: NSRegularExpression? {
         do {
@@ -34,42 +33,45 @@ extension AGRegex {
             return []
         }
 
-        if let result = matchResult {
-            return result
-        } else {
-            let matched = regex.matches(in: str,
-                                         options: [],
-                                         range: NSRange(location: 0, length: str.count))
+        let matched = regex.matches(in: str,
+                                     options: [],
+                                     range: NSRange(location: 0, length: str.count))
 
-             matchResult = matched.map {
-                var group: [String] = []
+         return matched.map {
+            var group: [String] = []
 
-                for index in 1 ..< $0.numberOfRanges {
-                    group.append(str[$0.range(at: index)])
-                }
-
-                return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
-                         base: str, groups: group)
+            for index in 1 ..< $0.numberOfRanges {
+                group.append(str[$0.range(at: index)])
             }
 
-            return matchResult ?? []
+            return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
+                     base: str, groups: group)
         }
     }
 
     func first(_ str: String) -> AGMatch? {
-        guard let result = matchResult?.first else {
-            return self.findAll(str).first
+        guard let regex = self.regex else {
+            return nil
         }
 
-        return result
+        let matched = regex.firstMatch(in: str,
+                             options: [],
+                             range: NSRange(location: 0, length: str.count))
+        return matched.map {
+            var group: [String] = []
+
+            for index in 1 ..< $0.numberOfRanges {
+                group.append(str[$0.range(at: index)])
+            }
+
+            return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
+                     base: str, groups: group)
+        }
+
     }
 
     func last(_ str: String) -> AGMatch? {
-        guard let result = matchResult?.last else {
-            return self.findAll(str).last
-        }
-
-        return result
+        return findAll(str).last
     }
 
     func sub(str: String, replace: String, count: Int = Int.max) -> String {

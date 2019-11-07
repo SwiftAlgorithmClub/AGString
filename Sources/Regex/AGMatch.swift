@@ -36,7 +36,11 @@ extension AGMatch {
     }
 
     func group() -> String {
-        return ""
+        guard let result = groups.first else {
+            return ""
+        }
+
+        return result
     }
     var span: AGSpan {
         return (start, end)
