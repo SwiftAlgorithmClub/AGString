@@ -13,34 +13,38 @@ import XCTest
 class AGRegexTest: XCTestCase {
     
     func testFindAll() {
-        let regex = AGRegex("ai")
+        let r = try! NSRegularExpression(pattern: "ai", options: [])
+        let regex = AGRegex(r)
         let str = "The rain in Spain"
         let actual = regex.findAll(str)
         let expect = [
-            AGMatch(start: 5, end: 7, base: str, groups: []),
-            AGMatch(start: 14, end: 16, base: str, groups: []),
+            AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
+            AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
         ]
         XCTAssertEqual(actual, expect)
     }
     
     func testFirstMatch() {
-        let regex = AGRegex("ai")
+        let r = try! NSRegularExpression(pattern: "ai", options: [])
+        let regex = AGRegex(r)
         let str = "The rain in Spain"
         let actual = regex.first(str)
-        let expect = AGMatch(start: 5, end: 7, base: str, groups: [])
+        let expect = AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
     
     func testLastMatch() {
-        let regex = AGRegex("ai")
+        let r = try! NSRegularExpression(pattern: "ai", options: [])
+        let regex = AGRegex(r)
         let str = "The rain in Spain"
         let actual = regex.last(str)
-        let expect = AGMatch(start: 14, end: 16, base: str, groups: [])
+        let expect = AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
     
     func testSub() {
-        let regex = AGRegex("\\s")
+        let r = try! NSRegularExpression(pattern: "\\s", options: [])
+        let regex = AGRegex(r)
         let str = "The rain in Spain"
         let actual = regex.sub(str: str, replace: "9")
         let expect = "The9rain9in9Spain"
@@ -48,7 +52,8 @@ class AGRegexTest: XCTestCase {
     }
     
     func testSubWithCount() {
-        let regex = AGRegex("\\s")
+        let r = try! NSRegularExpression(pattern: "\\s", options: [])
+        let regex = AGRegex(r)
         let str = "The rain in Spain"
         let actual = regex.sub(str: str, replace: "9", count: 2)
         let expect = "The9rain9in Spain"
@@ -56,7 +61,8 @@ class AGRegexTest: XCTestCase {
     }
     
     func testFindIter() {
-        let regex = AGRegex("([A-Z]+)([0-9]+)")
+        let r = try! NSRegularExpression(pattern: "([A-Z]+)([0-9]+)", options: [])
+        let regex = AGRegex(r)
         let str = "ABC12DEF3G56HIJ7"
         
         

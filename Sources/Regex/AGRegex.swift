@@ -9,19 +9,12 @@
 @_exported import Foundation
 
 class AGRegex {
-    
-    private let pattern: String
 
-    private var regex: NSRegularExpression? {
-        do {
-            return try NSRegularExpression(pattern: pattern)
-        } catch {
-            return nil
-        }
-    }
+    private var regex: NSRegularExpression
 
-    init(_ pattern: String) {
-        self.pattern = pattern
+
+    init(_ regex: NSRegularExpression) {
+        self.regex = regex
     }
 }
 
@@ -29,18 +22,15 @@ extension AGRegex {
     
     func findAll(_ str: String) -> [AGMatch] {
 
-        guard let regex = self.regex else {
-            return []
-        }
-
-        let matched = regex.matches(in: str,
-                                     options: [],
-                                     range: NSRange(location: 0, length: str.count))
+        let matched = regex.matches(
+                        in: str,
+                        options: [],
+                        range: NSRange(location: 0, length: str.count))
 
          return matched.map {
             var group: [String] = []
 
-            for index in 1 ..< $0.numberOfRanges {
+            for index in 0 ..< $0.numberOfRanges {
                 group.append(str[$0.range(at: index)])
             }
 
@@ -50,17 +40,15 @@ extension AGRegex {
     }
 
     func first(_ str: String) -> AGMatch? {
-        guard let regex = self.regex else {
-            return nil
-        }
+        let matched = regex.firstMatch(
+                        in: str,
+                        options: [],
+                        range: NSRange(location: 0, length: str.count))
 
-        let matched = regex.firstMatch(in: str,
-                             options: [],
-                             range: NSRange(location: 0, length: str.count))
         return matched.map {
             var group: [String] = []
 
-            for index in 1 ..< $0.numberOfRanges {
+            for index in 0 ..< $0.numberOfRanges {
                 group.append(str[$0.range(at: index)])
             }
 
