@@ -1,3 +1,4 @@
+Test PR
 <p align="center">
    <img width="200" src="https://raw.githubusercontent.com/SvenTiigi/SwiftKit/gh-pages/readMeAssets/SwiftKitLogo.png" alt="AGString Logo">
 </p>
