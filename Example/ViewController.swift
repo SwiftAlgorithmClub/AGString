@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         return label
     }()
 
+    func testPR() {
+    }
     // MARK: View-Lifecycle
 
     /// View did load
