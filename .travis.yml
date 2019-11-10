@@ -46,7 +46,7 @@ before_script:
   esac
 
 script:
-  - set -o pipefail
+  - set -o pipefail 
   - xcodebuild -version
   - xcodebuild -showsdks
   
