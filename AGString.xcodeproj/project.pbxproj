@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FBE39ED2377C7B700D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39EE2377C7B700D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39EF2377C7B700D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39F02377C7B700D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39F12377C7B700D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39F22377C7B700D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
+		2FBE39F32377C7C000D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39F42377C7C000D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39F52377C7C000D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39F62377C7C000D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39F72377C7C000D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39F82377C7C000D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
+		2FBE39F92377C7C600D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39FA2377C7C600D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39FB2377C7C600D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39FC2377C7C600D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39FD2377C7C600D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39FE2377C7C600D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		3D9C42A222745900000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
 		3D9C42B1227459C1000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
 		3D9C42BF227459F6000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
@@ -23,9 +41,15 @@
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* AGString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; };
 		3D9C433522746323000A6585 /* AGString.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* AGString.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		BD02777723701DAE007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
+		BD02777823701DB4007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
+		BD02777923701DB7007DCFB6 /* AGRegexTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777523701DA2007DCFB6 /* AGRegexTest.swift */; };
 		BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		BDDA016223703F820001AF7C /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,9 +126,13 @@
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB91AC4229AC263002668DA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		3DF6F6282315616D00706C4E /* main.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.yml; path = .github/workflows/main.yml; sourceTree = SOURCE_ROOT; };
+		BD02777323701C86007DCFB6 /* AGMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatch.swift; sourceTree = "<group>"; };
+		BD02777523701DA2007DCFB6 /* AGRegexTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegexTest.swift; sourceTree = "<group>"; };
 		BDB3A5A1236EF1B30041D167 /* AGRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGRegex.swift; sourceTree = "<group>"; };
+		BDDA016123703F820001AF7C /* AGMatchIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchIterator.swift; sourceTree = "<group>"; };
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
+		FF6C86D12372D77B004C83A0 /* String+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSRange.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +258,7 @@
 			children = (
 				3D9C42EC22745FDA000A6585 /* LinuxMain.swift */,
 				3D9C42D722745CDE000A6585 /* AGStringTests.swift */,
+				BD02777523701DA2007DCFB6 /* AGRegexTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -268,6 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				BDB3A5A1236EF1B30041D167 /* AGRegex.swift */,
+				BD02777323701C86007DCFB6 /* AGMatch.swift */,
+				BDDA016123703F820001AF7C /* AGMatchIterator.swift */,
+				FF6C86D12372D77B004C83A0 /* String+NSRange.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -659,8 +691,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4F190C236F126000A0CD30 /* Utility.swift in Sources */,
+				BDDA016223703F820001AF7C /* AGMatchIterator.swift in Sources */,
 				FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */,
+				BD02777423701C86007DCFB6 /* AGMatch.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
+				FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */,
 				BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,6 +704,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39ED2377C7B700D65251 /* AGRegex.swift in Sources */,
+				2FBE39EE2377C7B700D65251 /* AGMatch.swift in Sources */,
+				2FBE39EF2377C7B700D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39F02377C7B700D65251 /* String+NSRange.swift in Sources */,
+				2FBE39F12377C7B700D65251 /* StringIndex.swift in Sources */,
+				2FBE39F22377C7B700D65251 /* Utility.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,6 +718,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39F32377C7C000D65251 /* AGRegex.swift in Sources */,
+				2FBE39F42377C7C000D65251 /* AGMatch.swift in Sources */,
+				2FBE39F52377C7C000D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39F62377C7C000D65251 /* String+NSRange.swift in Sources */,
+				2FBE39F72377C7C000D65251 /* StringIndex.swift in Sources */,
+				2FBE39F82377C7C000D65251 /* Utility.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +732,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39F92377C7C600D65251 /* AGRegex.swift in Sources */,
+				2FBE39FA2377C7C600D65251 /* AGMatch.swift in Sources */,
+				2FBE39FB2377C7C600D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39FC2377C7C600D65251 /* String+NSRange.swift in Sources */,
+				2FBE39FD2377C7C600D65251 /* StringIndex.swift in Sources */,
+				2FBE39FE2377C7C600D65251 /* Utility.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777723701DAE007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C42FC22746078000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,6 +755,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777823701DB4007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C430C22746131000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02777923701DB7007DCFB6 /* AGRegexTest.swift in Sources */,
 				3D9C431C227461AF000A6585 /* AGStringTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

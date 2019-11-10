@@ -5,26 +5,79 @@ branches:
     - /^hotfix.*$/
     - /^feature.*$/
 
-notifications:
-  email:
-    on_success: change
-    on_failure: always
-
 language: swift
+osx_image: xcode11.2
+sudo: false
 
-stages:
-  - Tests
-  - Compatibility
+xcode_project: AGString.xcodeproj 
 
-jobs:
-  include:
-    - stage: Tests
-      os: osx
-      osx_image: xcode10.2
-      name: Unit Tests
-      script: fastlane ios tests
-    - stage: Compatibility
-      os: osx
-      osx_image: xcode10.2
-      name: DependencyManager compatibility
-      script: fastlane ios compatibilityTests
+xcode_scheme:
+  - AGString 
+
+
+env:
+  - CACHE_NAME=iOS       PLATFORM=iOS
+  - CACHE_NAME=macOS     PLATFORM=macOS
+  - CACHE_NAME=tvOS      PLATFORM=tvOS
+  - CACHE_NAME=watchOS   PLATFORM=watchOS
+
+before_script:
+  - export RUN_TESTS="YES"
+  - export SCHEME="${TRAVIS_XCODE_SCHEME}-${PLATFORM}"
+  - echo "TRAVIS_XCODE_SCHEME ${TRAVIS_XCODE_SCHEME} PLATFORM ${PLATFORM}"
+
+  - case "${PLATFORM}" in
+    "iOS")
+      export SDK="iphonesimulator13.2";
+      export DESTINATION="platformplatform=iOS Simulator,OS=13.2,name=iPhone 8";
+      ;;
+    "macOS")
+      export SDK="macosx10.15";
+      export DESTINATION="platform=macOS,arch=x86_64";
+      ;;
+    "tvOS")
+      export SDK="appletvsimulator13.2";
+      export DESTINATION="platform=tvOS Simulator,OS=13.2,name=Apple TV";
+      ;;
+    "watchOS")
+      export SDK="watchsimulator6.1";
+      export DESTINATION="platform=watchOS Simulator,OS=6.1,name=Apple Watch Series 5 - 44mm";
+      ;;
+  esac
+
+script:
+  - set -o pipefail 
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  
+  - echo "TRAVIS_XCODE_PROJECT ${TRAVIS_XCODE_PROJECT}"
+  # - xcodebuild clean -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" | xcpretty
+
+  # Build Framework in Debug and Run Tests if specified
+  
+  - echo "BUILD FOR DEBUG"
+  # - if [ ${RUN_TESTS} == "YES" ]; then
+  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+  #   else
+  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+  #   fi
+
+  # - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
+
+  # Build Framework in Release and Run Tests if specified
+  - echo "BUILD FOR RELEASE"
+
+  - echo "SDK ${SDK}"
+  - echo "DESTINATION ${DESTINATION}"
+  # - if [ ${RUN_TESTS} == "YES" ]; then
+  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+  #   else
+  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+  #   fi
+
+  # # Run `pod lib lint` if specified
+  # - if [ $POD_LINT == "YES" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+  #     pod repo update > /dev/null;
+  #     travis_wait 60 pod lib lint --allow-warnings;
+  #   fi
+
