@@ -1,5 +1,6 @@
 <p align="center">
-   <img width="200" src="https://raw.githubusercontent.com/SvenTiigi/SwiftKit/gh-pages/readMeAssets/SwiftKitLogo.png" alt="AGString Logo">
+   
+   <img width="300" src="https://github.com/SwiftAlgorithmClub/AGResources/blob/master/Banner.png" alt="AGString Logo">
 </p>
 
 <p align="center">
