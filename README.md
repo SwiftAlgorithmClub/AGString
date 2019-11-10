@@ -22,13 +22,33 @@
 # AGString
 
 <p align="center">
-ℹ️ Short description of AGString
+AGString is an extension for convenient working with swift String.  
 </p>
+
+<p align="center">
+AGRegex is Wrapper of NSRegularExpression. It gives an easy and iterative way to use RegularExpression. 
+ </p>
 
 ## Features
 
-- [x] ℹ️ Add AGString features
-
+- AGString gives 'String type' to 'Int-Index' based referencing
+    
+    [x] Get Character object with Int index
+    
+    [x] Get substring object with Range<Int>
+    
+    [x] String utility methods(zfill, countOccurence, ltrim,rtrim ...)
+    
+- AGRegex 
+    
+    [x] Provide NSRange extension for String
+    
+    [x] Get All Match Result as AGMatch structure. 
+    
+    [x] Support iterative way to use match result
+    
+    [x] Substitute matched string to other string 
+    
 ## Example
 
 The example application is the best way to see `AGString` in action. Simply open the `AGString.xcodeproj` and run the `Example` scheme.
