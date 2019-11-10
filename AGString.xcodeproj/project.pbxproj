@@ -98,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F6581C02377FA9200C5004C /* AGString.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AGString.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2FD35AE52377FD0E00D0B4F1 /* AGRegex.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = AGRegex.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3D9C429022745894000A6585 /* AGString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGString.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C429C227458E8000A6585 /* AGString.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AGString.plist; sourceTree = "<group>"; };
 		3D9C429D227458E8000A6585 /* AGStringTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AGStringTests.plist; sourceTree = "<group>"; };
@@ -202,6 +204,8 @@
 		3D9C428622745894000A6585 = {
 			isa = PBXGroup;
 			children = (
+				2FD35AE52377FD0E00D0B4F1 /* AGRegex.playground */,
+				2F6581C02377FA9200C5004C /* AGString.playground */,
 				3D9C42A0227458FA000A6585 /* Sources */,
 				3D9C42A32274595F000A6585 /* Tests */,
 				3D9C43222274629B000A6585 /* Example */,

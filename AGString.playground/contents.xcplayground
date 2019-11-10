@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
+    <pages>
+        <page name='Slicing'/>
+        <page name='CharAt'/>
+        <page name='Zfill'/>
+        <page name='WordCount'/>
+        <page name='Trim'/>
+    </pages>
+</playground>
