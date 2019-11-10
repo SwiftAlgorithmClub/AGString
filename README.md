@@ -29,16 +29,16 @@ AGRegex is Wrapper of NSRegularExpression. It gives an easy and iterative way to
 ## Features
 - AGString gives 'String type' to 'Int-Index' based referencing
     
-    * ❎ Get Character object with Int index
-    * ❎ Get substring object with Range<Int>
-    * ❎ String utility methods(zfill, countOccurence, ltrim,rtrim ...)
+    * :white_check_mark: Get Character object with Int index
+    * :white_check_mark: Get substring object with Range<Int>
+    * :white_check_mark: String utility methods(zfill, countOccurence, ltrim,rtrim ...)
     
 - AGRegex 
     
-    * ❎ Provide NSRange extension for String
-    * ❎ Get All Match Result as AGMatch structure. 
-    * ❎ Support iterative way to use match result
-    * ❎ Substitute matched string to other string 
+    * :white_check_mark: Provide NSRange extension for String
+    * :white_check_mark: Get All Match Result as AGMatch structure. 
+    * :white_check_mark: Support iterative way to use match result
+    * :white_check_mark: Substitute matched string to other string 
     
 ## Example
 The example application is the best way to see `AGString` in action. Simply open the `AGString.xcodeproj` and run the `Example` scheme.
