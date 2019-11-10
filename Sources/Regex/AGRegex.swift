@@ -8,18 +8,18 @@
 
 @_exported import Foundation
 
-class AGRegex {
+public class AGRegex {
 
     private var regex: NSRegularExpression
 
-    init(_ regex: NSRegularExpression) {
+    public init(_ regex: NSRegularExpression) {
         self.regex = regex
     }
 }
 
 extension AGRegex {
     
-    func findAll(_ str: String) -> [AGMatch] {
+    public func findAll(_ str: String) -> [AGMatch] {
 
         let matched = regex.matches(
                         in: str,
@@ -38,7 +38,7 @@ extension AGRegex {
         }
     }
 
-    func first(_ str: String) -> AGMatch? {
+    public func first(_ str: String) -> AGMatch? {
         let matched = regex.firstMatch(
                         in: str,
                         options: [],
@@ -57,11 +57,11 @@ extension AGRegex {
 
     }
 
-    func last(_ str: String) -> AGMatch? {
+    public func last(_ str: String) -> AGMatch? {
         return findAll(str).last
     }
 
-    func sub(str: String, replace: String, count: Int = Int.max) -> String {
+    public func sub(str: String, replace: String, count: Int = Int.max) -> String {
         var result = str
         var replacingCount = count
 
@@ -78,7 +78,7 @@ extension AGRegex {
         return result
     }
 
-    func finditer(_ str: String) -> IndexingIterator<[AGMatch]> {
+    public func finditer(_ str: String) -> IndexingIterator<[AGMatch]> {
         return self.findAll(str).makeIterator()
     }
 }
