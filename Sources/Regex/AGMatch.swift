@@ -8,8 +8,9 @@
 
 import Foundation
 
-typealias AGSpan = (Int, Int)
-struct AGMatch {
+public typealias AGSpan = (Int, Int)
+
+public struct AGMatch {
     let start: Int
     let end: Int
     let base: String
@@ -24,10 +25,10 @@ struct AGMatch {
 }
 
 extension AGMatch {
-    var groupCount: Int {
+    public var groupCount: Int {
         return groups.count
     }
-    func group(_ index: Int) -> String {
+    public func group(_ index: Int) -> String {
         guard index < groups.count else {
             return ""
         }
@@ -35,20 +36,14 @@ extension AGMatch {
         return groups[index]
     }
 
-    func group() -> String {
+    public func group() -> String {
         guard let result = groups.first else {
             return ""
         }
 
         return result
     }
-    var span: AGSpan {
+    public var span: AGSpan {
         return (start, end)
-    }
-}
-
-extension AGMatch: Sequence {
-    __consuming func makeIterator() -> AGMatchIterator {
-        return AGMatchIterator()
     }
 }

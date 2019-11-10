@@ -1,8 +1,5 @@
 <p align="center">
-   
-   <img width="300" src="https://github.com/SwiftAlgorithmClub/AGResources/blob/master/Banner.png" alt="AGString Logo">
-</p>
-
+   <img width="300" src="https://github.com/SwiftAlgorithmClub/AGResources/blob/master/Banner.png" alt="AGString Logo"></p>
 <p align="center">
    <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
@@ -22,89 +19,135 @@
 </p>
 
 # AGString
-
 <p align="center">
-ℹ️ Short description of AGString
+AGString is an extension for convenient working with swift String.  
 </p>
-
+<p align="center">
+AGRegex is Wrapper of NSRegularExpression. It gives an easy and iterative way to use RegularExpression. 
+ </p>
+ 
 ## Features
-
-- [x] ℹ️ Add AGString features
-
+- AGString gives 'String type' to 'Int-Index' based referencing
+    
+    * ❎ Get Character object with Int index
+    * ❎ Get substring object with Range<Int>
+    * ❎ String utility methods(zfill, countOccurence, ltrim,rtrim ...)
+    
+- AGRegex 
+    
+    * ❎ Provide NSRange extension for String
+    * ❎ Get All Match Result as AGMatch structure. 
+    * ❎ Support iterative way to use match result
+    * ❎ Substitute matched string to other string 
+    
 ## Example
-
 The example application is the best way to see `AGString` in action. Simply open the `AGString.xcodeproj` and run the `Example` scheme.
-
 ## Installation
-
 ### CocoaPods
-
 AGString is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
-
 ```bash
 pod 'AGString'
 ```
-
 ### Carthage
-
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-
 To integrate AGString into your Xcode project using Carthage, specify it in your `Cartfile`:
-
 ```ogdl
-github "KITGITHUBHANDLE/AGString"
+github "SwiftAlgorithmClub/AGString"
 ```
-
 Run `carthage update` to build the framework and drag the built `AGString.framework` into your Xcode project. 
-
 On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos)
-
-### Swift Package Manager
-
-To integrate using Apple's [Swift Package Manager](https://swift.org/package-manager/), add the following as a dependency to your `Package.swift`:
-
+## AGString Usage
+### Slicing
 ```swift
-dependencies: [
-    .package(url: "https://github.com/SwiftAlgorithmClub/AGString.git.git", from: "1.0.0")
-]
+var str = "Hello, World!"
+str[1..<3]  // "el"
+str[7...9]  // "Wor"
+str[7...]   // "World!"
+str[..<5]   // "Hello"
+str[...5]   // "Hello,"
 ```
-
-Alternatively navigate to your Xcode project, select `Swift Packages` and click the `+` icon to search for `AGString`.
-
-### Manually
-
-If you prefer not to use any of the aforementioned dependency managers, you can integrate AGString into your project manually. Simply drag the `Sources` Folder into your Xcode project.
-
-## Usage
-
-ℹ️ Describe the usage of your Kit
-
+### CharAt
+```swift
+var str = "Hello, World!"
+str[1] // "e"
+```
+### Trim
+```swift
+"     abcd    ".trimLeft()
+// "abcd    "
+"     abcd    ".trimRight() 
+// "     abcd"
+"     abcd    ".trim()
+//"abcd"
+```
+### WordCount
+```swift
+let str = "like in like"
+str.occurence(of: "like")   //  2
+```
+### Zfill
+```swift
+let str = "abc"
+str.zfill(10)                                 // "0000000abc"
+str.zfill(10, with: "1", direction: .right)   // "abc1111111"
+```
+## AGRegex Usage
+### FindAll
+```swift
+let r = try! NSRegularExpression(pattern: "ai", options: [])
+let regex = AGRegex(r)
+regex.findAll("The rain in Spain")
+/* 
+[
+  AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
+  AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
+]
+*/
+```
+### First 
+```swift
+let r = try! NSRegularExpression(pattern: "ai", options: [])
+let regex = AGRegex(r)
+regex.first("The rain in Spain")
+// AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
+```
+### Last 
+```swift
+let r = try! NSRegularExpression(pattern: "ai", options: [])
+let regex = AGRegex(r)
+regex.last("The rain in Spain")
+// AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
+```
+### Sub 
+```swift
+let r = try! NSRegularExpression(pattern: "ai", options: [])
+let regex = AGRegex(r)
+regex.last("The rain in Spain")
+// AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
+let r = try! NSRegularExpression(pattern: "\\s", options: [])
+let regex = AGRegex(r)
+regex.sub(str: "The rain in Spain", replace: "9")
+// The9rain9in9Spain
+regex.sub(str: str, replace: "9", count: 2)
+subWithCount == "The9rain9in Spain"
+// "The9rain9in Spain"
+```
+### FindIter 
+```swift
+let r = try! NSRegularExpression(pattern: "([A-Z]+)([0-9]+)", options: [])
+let regex = AGRegex(r)
+for m in regex.finditer("ABC12DEF3G56HIJ7") {
+   print("\(m.group(2)) * \(m.group(1))")
+}
+/*
+ "12 * ABC",
+ "3 * DEF",
+ "56 * G",
+ "7 * HIJ"
+ */
+```
 ## Contributing
 Contributions are very welcome 🙌
-
 ## License
-
-```
-AGString
-Copyright (c) 2019 AGString kimtaesoo188@gmail.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-```
-# AGString
+AGString is released under the MIT license. See LICENSE for details.
