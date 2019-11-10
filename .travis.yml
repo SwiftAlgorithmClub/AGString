@@ -27,53 +27,43 @@ before_script:
   - echo "TRAVIS_XCODE_SCHEME ${TRAVIS_XCODE_SCHEME} PLATFORM ${PLATFORM}"
 
   - case "${PLATFORM}" in
-    "iOS")
-      export SDK="iphonesimulator13.2";
-      export DESTINATION="platformplatform=iOS Simulator,OS=13.2,name=iPhone 8";
-      ;;
-    "macOS")
-      export SDK="macosx10.15";
-      export DESTINATION="platform=macOS,arch=x86_64";
-      ;;
-    "tvOS")
-      export SDK="appletvsimulator13.2";
-      export DESTINATION="platform=tvOS Simulator,OS=13.2,name=Apple TV";
-      ;;
-    "watchOS")
-      export SDK="watchsimulator6.1";
-      export DESTINATION="platform=watchOS Simulator,OS=6.1,name=Apple Watch Series 5 - 44mm";
-      ;;
-  esac
-
+      "iOS")
+        export SDK="iphonesimulator13.2";
+        export DESTINATION="platform=iOS Simulator,OS=13.2,name=iPhone 8";
+        ;;
+      "macOS")
+        export SDK="macosx10.15";
+        export DESTINATION="platform=macOS,arch=x86_64";
+        ;;
+      "tvOS")
+        export SDK="appletvsimulator13.2";
+        export DESTINATION="platform=tvOS Simulator,OS=13.2,name=Apple TV";
+        ;;
+      "watchOS")
+        export SDK="watchsimulator6.1";
+        export DESTINATION="platform=watchOS Simulator,OS=6.1,name=Apple Watch Series 5 - 44mm";
+        export RUN_TESTS="NO";
+        ;;
+    esac
 script:
   - set -o pipefail 
   - xcodebuild -version
   - xcodebuild -showsdks
   
-  - echo "TRAVIS_XCODE_PROJECT ${TRAVIS_XCODE_PROJECT}"
-  # - xcodebuild clean -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" | xcpretty
+
+  - xcodebuild clean -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" | xcpretty
 
   # Build Framework in Debug and Run Tests if specified
-  
+
+   
   - echo "BUILD FOR DEBUG"
-  # - if [ ${RUN_TESTS} == "YES" ]; then
-  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
-  #   else
-  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
-  #   fi
+  - if [ ${RUN_TESTS} == "YES" ]; then
+      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+    else
+      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
 
-  # - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
-
-  # Build Framework in Release and Run Tests if specified
-  - echo "BUILD FOR RELEASE"
-
-  - echo "SDK ${SDK}"
-  - echo "DESTINATION ${DESTINATION}"
-  # - if [ ${RUN_TESTS} == "YES" ]; then
-  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
-  #   else
-  #     xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
-  #   fi
+  - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
 
   # # Run `pod lib lint` if specified
   # - if [ $POD_LINT == "YES" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
@@ -81,3 +71,10 @@ script:
   #     travis_wait 60 pod lib lint --allow-warnings;
   #   fi
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t "$CODE_COV_TOKEN"
+  
+notifications:
+  slack:
+    rooms:
+    - swiftalgorithmclub:rJxmAKJgpZNBKR2ogwcHbtGu#agstring
