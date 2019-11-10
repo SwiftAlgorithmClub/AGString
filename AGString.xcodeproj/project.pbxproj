@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FBE39ED2377C7B700D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39EE2377C7B700D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39EF2377C7B700D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39F02377C7B700D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39F12377C7B700D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39F22377C7B700D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
+		2FBE39F32377C7C000D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39F42377C7C000D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39F52377C7C000D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39F62377C7C000D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39F72377C7C000D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39F82377C7C000D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
+		2FBE39F92377C7C600D65251 /* AGRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A5A1236EF1B30041D167 /* AGRegex.swift */; };
+		2FBE39FA2377C7C600D65251 /* AGMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02777323701C86007DCFB6 /* AGMatch.swift */; };
+		2FBE39FB2377C7C600D65251 /* AGMatchIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA016123703F820001AF7C /* AGMatchIterator.swift */; };
+		2FBE39FC2377C7C600D65251 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
+		2FBE39FD2377C7C600D65251 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
+		2FBE39FE2377C7C600D65251 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		3D9C42A222745900000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
 		3D9C42B1227459C1000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
 		3D9C42BF227459F6000A6585 /* AGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42A122745900000A6585 /* AGString.swift */; };
@@ -686,6 +704,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39ED2377C7B700D65251 /* AGRegex.swift in Sources */,
+				2FBE39EE2377C7B700D65251 /* AGMatch.swift in Sources */,
+				2FBE39EF2377C7B700D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39F02377C7B700D65251 /* String+NSRange.swift in Sources */,
+				2FBE39F12377C7B700D65251 /* StringIndex.swift in Sources */,
+				2FBE39F22377C7B700D65251 /* Utility.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,6 +718,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39F32377C7C000D65251 /* AGRegex.swift in Sources */,
+				2FBE39F42377C7C000D65251 /* AGMatch.swift in Sources */,
+				2FBE39F52377C7C000D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39F62377C7C000D65251 /* String+NSRange.swift in Sources */,
+				2FBE39F72377C7C000D65251 /* StringIndex.swift in Sources */,
+				2FBE39F82377C7C000D65251 /* Utility.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,6 +732,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE39F92377C7C600D65251 /* AGRegex.swift in Sources */,
+				2FBE39FA2377C7C600D65251 /* AGMatch.swift in Sources */,
+				2FBE39FB2377C7C600D65251 /* AGMatchIterator.swift in Sources */,
+				2FBE39FC2377C7C600D65251 /* String+NSRange.swift in Sources */,
+				2FBE39FD2377C7C600D65251 /* StringIndex.swift in Sources */,
+				2FBE39FE2377C7C600D65251 /* Utility.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* AGString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
