@@ -14,14 +14,14 @@ public struct AGMatchLazyList: Equatable, Sequence {
 
     public let baseString: String
     private let regex: NSRegularExpression
-
-    init(withBase base: String, regex: NSRegularExpression) {
+    
+    init(base: String, regex: NSRegularExpression) {
         self.baseString = base
         self.regex = regex
     }
 
     public __consuming func makeIterator() -> AGMatchLazyList.Iterator {
-        return AGMatchLazyListIterator(withBase: baseString,
+        return AGMatchLazyListIterator(base: baseString,
                                        regex: self.regex)
     }
 }

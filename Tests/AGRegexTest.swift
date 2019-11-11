@@ -16,7 +16,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.matchAll(str)
+        let actual = regex.makeMatchList(str)
         let expect = AGMatchList(base: str, matching:  [
                    AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
                    AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
@@ -29,7 +29,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.matchAll(str).first
+        let actual = regex.makeMatchList(str).first
         let expect = AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -38,7 +38,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.matchAll(str).last
+        let actual = regex.makeMatchList(str).last
         let expect = AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -76,7 +76,7 @@ class AGRegexTest: XCTestCase {
 
         var actuals: [String] = []
 
-        for m in regex.matchAllLazliy(str) {
+        for m in regex.makeMatchStream(str) {
             let actual = "\(m.group(2)) * \(m.group(1))"
             actuals.append(actual)
         }

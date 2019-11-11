@@ -43,7 +43,7 @@ public struct AGMatchLazyListIterator: IteratorProtocol {
         return result
     }
 
-    init(withBase base: String, regex: NSRegularExpression) {
+    init(base: String, regex: NSRegularExpression) {
         self.baseString = base
         self.regex = regex
     }
