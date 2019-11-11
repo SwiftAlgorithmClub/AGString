@@ -19,32 +19,15 @@ public class AGRegex {
 
 extension AGRegex {
     
-    public func findAll(_ str: String) -> [AGMatch] {
+    public func matchAll(_ str: String,
+                         options: NSRegularExpression.MatchingOptions = [] ) -> AGMatchList {
 
         let matched = regex.matches(
                         in: str,
-                        options: [],
+                        options: options,
                         range: NSRange(location: 0, length: str.count))
 
-         return matched.map {
-            var group: [String] = []
-
-            for index in 0 ..< $0.numberOfRanges {
-                group.append(str[$0.range(at: index)])
-            }
-
-            return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
-                     base: str, groups: group)
-        }
-    }
-
-    public func first(_ str: String) -> AGMatch? {
-        let matched = regex.firstMatch(
-                        in: str,
-                        options: [],
-                        range: NSRange(location: 0, length: str.count))
-
-        return matched.map {
+        let mapped: [AGMatch] = matched.map {
             var group: [String] = []
 
             for index in 0 ..< $0.numberOfRanges {
@@ -55,10 +38,7 @@ extension AGRegex {
                      base: str, groups: group)
         }
 
-    }
-
-    public func last(_ str: String) -> AGMatch? {
-        return findAll(str).last
+        return AGMatchList(base: str, matching: mapped)
     }
 
     public func sub(str: String, replace: String, count: Int = Int.max) -> String {
@@ -76,9 +56,5 @@ extension AGRegex {
         }
 
         return result
-    }
-
-    public func finditer(_ str: String) -> IndexingIterator<[AGMatch]> {
-        return self.findAll(str).makeIterator()
     }
 }

@@ -16,11 +16,12 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.findAll(str)
-        let expect = [
-            AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
-            AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
-        ]
+        let actual = regex.matchAll(str)
+        let expect = AGMatchList(base: str, matching:  [
+                   AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
+                   AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
+               ])
+        
         XCTAssertEqual(actual, expect)
     }
     
@@ -28,7 +29,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.first(str)
+        let actual = regex.matchAll(str).first
         let expect = AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -37,7 +38,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.last(str)
+        let actual = regex.matchAll(str).last
         let expect = AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -74,7 +75,7 @@ class AGRegexTest: XCTestCase {
         ]
         
         var testCount = 0
-        for (i, m) in regex.finditer(str).enumerated() {
+        for (i, m) in regex.matchAll(str).enumerated() {
             let actual = "\(m.group(2)) * \(m.group(1))"
             let expect = expects[i]
             XCTAssertEqual(actual, expect)
@@ -82,14 +83,5 @@ class AGRegexTest: XCTestCase {
         }
         
         XCTAssertEqual(testCount, 4)
-    }
-}
-
-extension AGMatch: Equatable {
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.base == rhs.base &&
-            lhs.start == rhs.start &&
-            lhs.end == rhs.end &&
-            lhs.groupCount == rhs.groupCount
     }
 }
