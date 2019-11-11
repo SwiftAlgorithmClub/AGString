@@ -75,11 +75,14 @@ class AGRegexTest: XCTestCase {
         ]
         
         var testCount = 0
-        for (i, m) in regex.getMatchList(str).enumerated() {
+        var iterator = regex.getIterator(str)
+        var index = 0
+        while let m = iterator.next() {
             let actual = "\(m.group(2)) * \(m.group(1))"
-            let expect = expects[i]
+            let expect = expects[index]
             XCTAssertEqual(actual, expect)
             testCount += 1
+            index += 1
         }
         
         XCTAssertEqual(testCount, 4)
