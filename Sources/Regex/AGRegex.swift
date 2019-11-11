@@ -20,12 +20,14 @@ public class AGRegex {
 extension AGRegex {
     
     public func matchAll(_ str: String,
-                         options: NSRegularExpression.MatchingOptions = [] ) -> AGMatchList {
-
+                         options: NSRegularExpression.MatchingOptions = [])
+                            -> AGMatchList {
         let matched = regex.matches(
                         in: str,
                         options: options,
                         range: NSRange(location: 0, length: str.count))
+        let mapped: [AGMatch] = matched.map {
+            var group: [String] = []
 
                 for index in 0 ..< $0.numberOfRanges {
                     group.append(str[$0.range(at: index)])
@@ -36,10 +38,6 @@ extension AGRegex {
                                base: str,
                                groups: group)
             }
-
-            return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
-                     base: str, groups: group)
-        }
 
         return AGMatchList(base: str, matching: mapped)
     }
@@ -61,7 +59,9 @@ extension AGRegex {
         return result
     }
 
-    public func getIterator(_ str: String) -> AGMatchLazyListIterator {
-        return AGMatchLazyList(withBase: str, regex: self.regex).makeIterator()
+    public func matchAllLazliy (_ str: String,
+                                option: NSRegularExpression.MatchingOptions = [])
+                            -> AGMatchLazyList {
+        return AGMatchLazyList(withBase: str, regex: self.regex)
     }
 }

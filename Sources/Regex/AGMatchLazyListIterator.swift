@@ -8,8 +8,9 @@
 
 import Foundation
 
-public struct AGMatchLazyListIterator: AGMatchListIteratorProtocol {
-
+public struct AGMatchLazyListIterator: IteratorProtocol {
+    public typealias Element = AGMatch
+    
     private let baseString: String
     private let regex: NSRegularExpression
     private var offset: Int = 0

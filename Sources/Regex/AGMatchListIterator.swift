@@ -8,8 +8,9 @@
 
 import Foundation
 
-public struct AGMatchListIterator: AGMatchListIteratorProtocol {
-
+public struct AGMatchListIterator: IteratorProtocol {
+    public typealias Element = AGMatch
+    
     var iterator: IndexingIterator<[AGMatch]>
     public mutating func next() -> AGMatch? {
         return iterator.next()
