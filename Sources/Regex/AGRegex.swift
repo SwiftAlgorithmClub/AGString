@@ -19,11 +19,12 @@ public class AGRegex {
 
 extension AGRegex {
     
-    public func getMatchList(_ str: String) -> AGMatchList {
+    public func matchAll(_ str: String,
+                         options: NSRegularExpression.MatchingOptions = [] ) -> AGMatchList {
 
         let matched = regex.matches(
                         in: str,
-                        options: [],
+                        options: options,
                         range: NSRange(location: 0, length: str.count))
 
         let mapped: [AGMatch] = matched.map {
@@ -37,7 +38,7 @@ extension AGRegex {
                      base: str, groups: group)
         }
 
-        return AGMatchList(withBase: str, matching: mapped)
+        return AGMatchList(base: str, matching: mapped)
     }
 
     public func sub(str: String, replace: String, count: Int = Int.max) -> String {

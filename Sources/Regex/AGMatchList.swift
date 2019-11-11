@@ -15,7 +15,7 @@ public struct AGMatchList: Sequence, Equatable {
     public let baseString: String
     private let list: [Element]
 
-    init(withBase base: String, matching matchList: [Element]) {
+    init(base: String, matching matchList: [Element]) {
         baseString = base
         list = matchList
     }
