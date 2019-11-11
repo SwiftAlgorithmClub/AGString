@@ -16,8 +16,8 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.getMatchList(str)
-        let expect = AGMatchList(withBase: str, matching:  [
+        let actual = regex.matchAll(str)
+        let expect = AGMatchList(base: str, matching:  [
                    AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
                    AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
                ])
@@ -29,7 +29,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.getMatchList(str).first
+        let actual = regex.matchAll(str).first
         let expect = AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -38,7 +38,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.getMatchList(str).last
+        let actual = regex.matchAll(str).last
         let expect = AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
