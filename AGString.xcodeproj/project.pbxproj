@@ -53,10 +53,8 @@
 		FF4F190C236F126000A0CD30 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4F190B236F126000A0CD30 /* Utility.swift */; };
 		FF5EFC83236EF301005134D1 /* StringIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EFC82236EF301005134D1 /* StringIndex.swift */; };
 		FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6C86D12372D77B004C83A0 /* String+NSRange.swift */; };
-		FFEFD69E23796B2100B17B4A /* AGMatchListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEFD69D23796B2100B17B4A /* AGMatchListProtocol.swift */; };
 		FFEFD6A023796E4200B17B4A /* AGMatchLazyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEFD69F23796E4200B17B4A /* AGMatchLazyList.swift */; };
 		FFEFD6A223796EDE00B17B4A /* AGMatchLazyListIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEFD6A123796EDE00B17B4A /* AGMatchLazyListIterator.swift */; };
-		FFEFD6A42379788000B17B4A /* AGMatchListIteratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEFD6A32379788000B17B4A /* AGMatchListIteratorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,10 +140,8 @@
 		FF4F190B236F126000A0CD30 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FF5EFC82236EF301005134D1 /* StringIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIndex.swift; sourceTree = "<group>"; };
 		FF6C86D12372D77B004C83A0 /* String+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSRange.swift"; sourceTree = "<group>"; };
-		FFEFD69D23796B2100B17B4A /* AGMatchListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchListProtocol.swift; sourceTree = "<group>"; };
 		FFEFD69F23796E4200B17B4A /* AGMatchLazyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchLazyList.swift; sourceTree = "<group>"; };
 		FFEFD6A123796EDE00B17B4A /* AGMatchLazyListIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchLazyListIterator.swift; sourceTree = "<group>"; };
-		FFEFD6A32379788000B17B4A /* AGMatchListIteratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGMatchListIteratorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,10 +311,8 @@
 				BDDA016123703F820001AF7C /* AGMatchListIterator.swift */,
 				FF6C86D12372D77B004C83A0 /* String+NSRange.swift */,
 				FF2593D9237827DE003C3B1F /* AGMatchList.swift */,
-				FFEFD69D23796B2100B17B4A /* AGMatchListProtocol.swift */,
 				FFEFD69F23796E4200B17B4A /* AGMatchLazyList.swift */,
 				FFEFD6A123796EDE00B17B4A /* AGMatchLazyListIterator.swift */,
-				FFEFD6A32379788000B17B4A /* AGMatchListIteratorProtocol.swift */,
 			);
 			path = Regex;
 			sourceTree = "<group>";
@@ -716,8 +710,6 @@
 				FFEFD6A223796EDE00B17B4A /* AGMatchLazyListIterator.swift in Sources */,
 				3D9C42A222745900000A6585 /* AGString.swift in Sources */,
 				FF2593DA237827DE003C3B1F /* AGMatchList.swift in Sources */,
-				FFEFD6A42379788000B17B4A /* AGMatchListIteratorProtocol.swift in Sources */,
-				FFEFD69E23796B2100B17B4A /* AGMatchListProtocol.swift in Sources */,
 				FF6C86D22372D77B004C83A0 /* String+NSRange.swift in Sources */,
 				BDB3A5A2236EF1B30041D167 /* AGRegex.swift in Sources */,
 				FFEFD6A023796E4200B17B4A /* AGMatchLazyList.swift in Sources */,
