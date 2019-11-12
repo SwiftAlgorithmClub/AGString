@@ -9,7 +9,7 @@
 @_exported import Foundation
 
 public class AGRegex {
-
+    
     private var regex: NSRegularExpression
 
     public init(_ regex: NSRegularExpression) {
@@ -19,24 +19,25 @@ public class AGRegex {
 
 extension AGRegex {
     
-    public func matchAll(_ str: String,
-                         options: NSRegularExpression.MatchingOptions = [] ) -> AGMatchList {
-
+    public func makeMatchList(_ str: String,
+                              options: NSRegularExpression.MatchingOptions = [])
+                                -> AGMatchList {
         let matched = regex.matches(
                         in: str,
                         options: options,
                         range: NSRange(location: 0, length: str.count))
-
         let mapped: [AGMatch] = matched.map {
             var group: [String] = []
 
-            for index in 0 ..< $0.numberOfRanges {
-                group.append(str[$0.range(at: index)])
-            }
+                for index in 0 ..< $0.numberOfRanges {
+                    group.append(str[$0.range(at: index)])
+                }
 
-            return AGMatch(start: $0.range.lowerBound, end: $0.range.upperBound,
-                     base: str, groups: group)
-        }
+                return AGMatch(start: $0.range.lowerBound,
+                               end: $0.range.upperBound,
+                               base: str,
+                               groups: group)
+            }
 
         return AGMatchList(base: str, matching: mapped)
     }
@@ -56,5 +57,11 @@ extension AGRegex {
         }
 
         return result
+    }
+
+    public func makeMatchStream(_ str: String,
+                                option: NSRegularExpression.MatchingOptions = [])
+                                -> AGMatchLazyList {
+        return AGMatchLazyList(base: str, regex: self.regex)
     }
 }

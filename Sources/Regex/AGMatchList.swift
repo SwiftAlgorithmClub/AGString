@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct AGMatchList: Sequence, Equatable {
+public struct AGMatchList: Equatable, Sequence {
     public typealias Iterator = AGMatchListIterator
     public typealias Element = AGMatch
-    
+
     public let baseString: String
     private let list: [Element]
 
