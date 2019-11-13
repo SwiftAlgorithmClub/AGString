@@ -16,11 +16,12 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.findAll(str)
-        let expect = [
-            AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
-            AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
-        ]
+        let actual = regex.makeMatchList(str)
+        let expect = AGMatchList(base: str, matching:  [
+                   AGMatch(start: 5, end: 7, base: str, groups: ["ai"]),
+                   AGMatch(start: 14, end: 16, base: str, groups: ["ai"]),
+               ])
+        
         XCTAssertEqual(actual, expect)
     }
     
@@ -28,7 +29,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.first(str)
+        let actual = regex.makeMatchList(str).first
         let expect = AGMatch(start: 5, end: 7, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -37,7 +38,7 @@ class AGRegexTest: XCTestCase {
         let r = try! NSRegularExpression(pattern: "ai", options: [])
         let regex = AGRegex(r)
         let str = "The rain in Spain"
-        let actual = regex.last(str)
+        let actual = regex.makeMatchList(str).last
         let expect = AGMatch(start: 14, end: 16, base: str, groups: ["ai"])
         XCTAssertEqual(actual, expect)
     }
@@ -60,7 +61,7 @@ class AGRegexTest: XCTestCase {
         XCTAssertEqual(actual, expect)
     }
     
-    func testFindIter() {
+    func testLazyMatch() {
         let r = try! NSRegularExpression(pattern: "([A-Z]+)([0-9]+)", options: [])
         let regex = AGRegex(r)
         let str = "ABC12DEF3G56HIJ7"
@@ -72,24 +73,14 @@ class AGRegexTest: XCTestCase {
             "56 * G",
             "7 * HIJ"
         ]
-        
-        var testCount = 0
-        for (i, m) in regex.finditer(str).enumerated() {
-            let actual = "\(m.group(2)) * \(m.group(1))"
-            let expect = expects[i]
-            XCTAssertEqual(actual, expect)
-            testCount += 1
-        }
-        
-        XCTAssertEqual(testCount, 4)
-    }
-}
 
-extension AGMatch: Equatable {
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.base == rhs.base &&
-            lhs.start == rhs.start &&
-            lhs.end == rhs.end &&
-            lhs.groupCount == rhs.groupCount
+        var actuals: [String] = []
+
+        for m in regex.makeMatchStream(str) {
+            let actual = "\(m.group(2)) * \(m.group(1))"
+            actuals.append(actual)
+        }
+
+        XCTAssertEqual(actuals, expects)
     }
 }

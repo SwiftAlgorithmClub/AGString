@@ -108,4 +108,34 @@ class AGStringTests: XCTestCase {
             str.trim()
         }
     }
+
+    func testSliced() {
+        XCTAssertEqual("abcdef".sliced(from: "a", to: "d"), "abcd")
+        XCTAssertEqual("abcdef".sliced(from: "a", to: "a"), "a")
+        XCTAssertEqual("abcdef".sliced(from: "a", to: "d", inversed: true), "dcba")
+        XCTAssertEqual("abcdef".sliced(from: "a", to: "a", inversed: true), "a")
+        XCTAssertEqual("abcdef".sliced(from: "a", to: "g"), "")
+        XCTAssertEqual("abcdef".sliced(from: "g", to: "g"), "")
+    }
+
+    func testSlice() {
+        var string = "abcdef"
+        string.slice(from: "a", to: "d")
+        XCTAssertEqual(string, "abcd")
+        string = "abcdef"
+        string.slice(from: "a", to: "a")
+        XCTAssertEqual(string, "a")
+        string = "abcdef"
+        string.slice(from: "a", to: "d", inversed: true)
+        XCTAssertEqual(string, "dcba")
+        string = "abcdef"
+        string.slice(from: "a", to: "a", inversed: true)
+        XCTAssertEqual(string, "a")
+        string = "abcdef"
+        string.slice(from: "a", to: "g")
+        XCTAssertEqual(string, "")
+        string = "abcdef"
+        string.slice(from: "g", to: "g")
+        XCTAssertEqual(string, "")
+    }
 }

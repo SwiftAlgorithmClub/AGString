@@ -142,3 +142,52 @@ extension String {
         return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }
+
+// MARK: - Slicing using characters
+
+extension String {
+
+    /// Returns a sliced string of given string
+    /// from the first `start` character to the last `end` character.
+    ///
+    /// If the lower bound is greater than the upper bound, it returns an empty string.
+    /// If the given string doesn't contain given characters, it also returns an empty string.
+    ///
+    /// - Parameters:
+    ///   - start:    The character value being the lower bound of the given string.
+    ///   - end:      The character value being the upper bound of the given string.
+    ///   - inversed: A boolean value that indicates whether the sliced string is inversed.
+    ///               The Default value is `false`.
+    ///
+    /// - Returns: A sliced string of given string.
+    public func sliced(from start: Character, to end: Character, inversed: Bool = false) -> String {
+         guard let startCharacterIndex = firstIndex(of: start),
+             let endCharacterIndex = lastIndex(of: end),
+             startCharacterIndex <= endCharacterIndex
+             else { return "" }
+         let slicedSubstring = self[startCharacterIndex ... endCharacterIndex]
+         return !inversed ? String(slicedSubstring) : String(slicedSubstring.reversed())
+    }
+
+    /// Slices a given string
+    /// from the first `start` character to the last `end` character.
+    ///
+    /// If the lower bound is greater than the upper bound, it becomes an empty string.
+    /// If the given string doesn't contain given characters, it also becomes an emtpy string.
+    ///
+    /// - Parameters:
+    ///   - start:    The character value being the lower bound of the given string.
+    ///   - end:      The character value being the upper bound of the given string.
+    ///   - inversed: A boolean value that indicates whether the sliced string is inversed.
+    ///               The Default value is `false`.
+    public mutating func slice(from start: Character, to end: Character, inversed: Bool = false) {
+        guard let startCharacterIndex = firstIndex(of: start),
+            let endCharacterIndex = lastIndex(of: end),
+            startCharacterIndex <= endCharacterIndex else {
+                self = ""
+                return
+        }
+        let slicedSubstring = self[startCharacterIndex ... endCharacterIndex]
+        self = !inversed ? String(slicedSubstring) : String(slicedSubstring.reversed())
+    }
+}

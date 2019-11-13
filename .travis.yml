@@ -9,10 +9,10 @@ language: swift
 osx_image: xcode11.2
 sudo: false
 
-xcode_project: AGString.xcodeproj 
+xcode_project: AGString.xcodeproj
 
 xcode_scheme:
-  - AGString 
+  - AGString
 
 
 env:
@@ -20,6 +20,10 @@ env:
   - CACHE_NAME=macOS     PLATFORM=macOS
   - CACHE_NAME=tvOS      PLATFORM=tvOS
   - CACHE_NAME=watchOS   PLATFORM=watchOS
+
+install:
+- pip install codecov
+
 
 before_script:
   - export RUN_TESTS="YES"
@@ -46,7 +50,7 @@ before_script:
         ;;
     esac
 script:
-  - set -o pipefail 
+  - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
   
@@ -58,7 +62,7 @@ script:
    
   - echo "BUILD FOR DEBUG"
   - if [ ${RUN_TESTS} == "YES" ]; then
-      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -derivedDataPath Build/ -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
     else
       xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
     fi
@@ -72,7 +76,7 @@ script:
   #   fi
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t "$CODE_COV_TOKEN"
+  - codecov
   
 notifications:
   slack:
