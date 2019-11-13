@@ -14,12 +14,16 @@ xcode_project: AGString.xcodeproj
 xcode_scheme:
   - AGString
 
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: "swiftalgorithmclub"
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
 
 env:
   - CACHE_NAME=iOS       PLATFORM=iOS
-  - CACHE_NAME=macOS     PLATFORM=macOS
-  - CACHE_NAME=tvOS      PLATFORM=tvOS
-  - CACHE_NAME=watchOS   PLATFORM=watchOS
 
 install:
 - pip install codecov
@@ -68,13 +72,15 @@ script:
     fi
 
   - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
-
+  - sonar-scanner
+  
   # # Run `pod lib lint` if specified
   # - if [ $POD_LINT == "YES" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   #     pod repo update > /dev/null;
   #     travis_wait 60 pod lib lint --allow-warnings;
   #   fi
 
+  
 after_success:
   - codecov
   
