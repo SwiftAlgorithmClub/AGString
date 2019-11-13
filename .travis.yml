@@ -24,6 +24,9 @@ addons:
 
 env:
   - CACHE_NAME=iOS       PLATFORM=iOS
+  - CACHE_NAME=macOS     PLATFORM=macOS
+  - CACHE_NAME=tvOS      PLATFORM=tvOS
+  - CACHE_NAME=watchOS   PLATFORM=watchOS
 
 install:
 - pip install codecov

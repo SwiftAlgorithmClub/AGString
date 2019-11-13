@@ -4,11 +4,6 @@
    <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
    </a>
-   <a href="https://travis-ci.com/SwiftAlgorithmClub/AGString">
-      <img src="https://travis-ci.com/SwiftAlgorithmClub/AGString.svg?branch=master" alt="SPM">   </a>
-   <a href="https://codecov.io/gh/SwiftAlgorithmClub/AGString">
-      <img src="https://codecov.io/gh/SwiftAlgorithmClub/AGString/branch/develop/graph/badge.svg" alt="SPM">
-   </a>
    <a href="http://cocoapods.org/pods/AGString">
       <img src="https://img.shields.io/cocoapods/v/AGString.svg?style=flat" alt="Version">
    </a>
@@ -20,6 +15,17 @@
    </a>
    <a href="https://github.com/apple/swift-package-manager">
       <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="SPM">
+   </a>
+</p>
+
+<p align="center">
+   <a href="https://travis-ci.com/SwiftAlgorithmClub/AGString">
+      <img src="https://travis-ci.com/SwiftAlgorithmClub/AGString.svg?branch=master" alt="SPM">   </a>
+   <a href="https://codecov.io/gh/SwiftAlgorithmClub/AGString">
+      <img src="https://codecov.io/gh/SwiftAlgorithmClub/AGString/branch/develop/graph/badge.svg" alt="SPM">
+   </a>
+      <a href="https://sonarcloud.io/dashboard?id=SwiftAlgorithmClub_AGString">
+      <img src="https://sonarcloud.io/api/project_badges/measure?project=SwiftAlgorithmClub_AGString&metric=alert_status" alt="SonarSwift">
    </a>
 </p>
 
