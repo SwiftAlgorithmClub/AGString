@@ -1,92 +1,115 @@
+
 branches:
   only:
-    - master
-    - develop
-    - /^hotfix.*$/
-    - /^feature.*$/
-
+  - master
+  - develop
+  - "/^hotfix.*$/"
+  - "/^feature.*$/"
 language: swift
 osx_image: xcode11.2
 sudo: false
-
 xcode_project: AGString.xcodeproj
-
-xcode_scheme:
-  - AGString
-
+xcode_scheme: AGString
 dist: trusty
 
-addons:
-  sonarcloud:
-    organization: "swiftalgorithmclub"
-    token:
-      secure: $SONAR_TOKEN # encrypted value of your token
 
+addons:
+  ssh_known_hosts: github.com
+  sonarcloud:
+    organization: swiftalgorithmclub
+    token:
+      secure: "$SONAR_TOKEN"
+      
 env:
-  - CACHE_NAME=iOS       PLATFORM=iOS
-  - CACHE_NAME=macOS     PLATFORM=macOS
-  - CACHE_NAME=tvOS      PLATFORM=tvOS
-  - CACHE_NAME=watchOS   PLATFORM=watchOS
+- CACHE_NAME=iOS       PLATFORM=iOS
+- CACHE_NAME=macOS     PLATFORM=macOS
+- CACHE_NAME=tvOS      PLATFORM=tvOS
+- CACHE_NAME=watchOS   PLATFORM=watchOS
+
+
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_2f16b48e5f2e_key -iv $encrypted_2f16b48e5f2e_iv -in deploy_rsa.enc -out deploy_rsa -d
+  - mv deploy_rsa ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent -s)
+  - ssh-add ~/.ssh/id_rsa
+
 
 install:
-- pip install codecov
-
+  - gem install cocoapods -v '~> 1.7.0'
+  - pip install codecov
 
 before_script:
-  - export RUN_TESTS="YES"
-  - export SCHEME="${TRAVIS_XCODE_SCHEME}-${PLATFORM}"
-  - echo "TRAVIS_XCODE_SCHEME ${TRAVIS_XCODE_SCHEME} PLATFORM ${PLATFORM}"
+- export RUN_TESTS="YES"
+- export SCHEME="${TRAVIS_XCODE_SCHEME}-${PLATFORM}"
+- echo "TRAVIS_XCODE_SCHEME ${TRAVIS_XCODE_SCHEME} PLATFORM ${PLATFORM}"
 
-  - case "${PLATFORM}" in
-      "iOS")
-        export SDK="iphonesimulator13.2";
-        export DESTINATION="platform=iOS Simulator,OS=13.2,name=iPhone 8";
-        ;;
-      "macOS")
-        export SDK="macosx10.15";
-        export DESTINATION="platform=macOS,arch=x86_64";
-        ;;
-      "tvOS")
-        export SDK="appletvsimulator13.2";
-        export DESTINATION="platform=tvOS Simulator,OS=13.2,name=Apple TV";
-        ;;
-      "watchOS")
-        export SDK="watchsimulator6.1";
-        export DESTINATION="platform=watchOS Simulator,OS=6.1,name=Apple Watch Series 5 - 44mm";
-        export RUN_TESTS="NO";
-        ;;
-    esac
+- case "${PLATFORM}" in
+    "iOS")
+      export SDK="iphonesimulator13.2";
+      export DESTINATION="platform=iOS Simulator,OS=13.2,name=iPhone 8";
+      ;;
+    "macOS")
+      export SDK="macosx10.15";
+      export DESTINATION="platform=macOS,arch=x86_64";
+      ;;
+    "tvOS")
+      export SDK="appletvsimulator13.2";
+      export DESTINATION="platform=tvOS Simulator,OS=13.2,name=Apple TV";
+      ;;
+    "watchOS")
+      export SDK="watchsimulator6.1";
+      export DESTINATION="platform=watchOS Simulator,OS=6.1,name=Apple Watch Series 5 - 44mm";
+      export RUN_TESTS="NO";
+      ;;
+  esac
+
 script:
-  - set -o pipefail
-  - xcodebuild -version
-  - xcodebuild -showsdks
-  
+    - set -o pipefail
+    - xcodebuild -version
+    - xcodebuild -showsdks
+    
 
-  - xcodebuild clean -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" | xcpretty
+    - xcodebuild clean -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" | xcpretty
 
-  # Build Framework in Debug and Run Tests if specified
+    # Build Framework in Debug and Run Tests if specified
 
-   
-  - echo "BUILD FOR DEBUG"
-  - if [ ${RUN_TESTS} == "YES" ]; then
-      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -derivedDataPath Build/ -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
-    else
-      xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+     
+    - echo "BUILD FOR DEBUG"
+    - if [ ${RUN_TESTS} == "YES" ]; then
+        xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -derivedDataPath Build/ -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+      else
+        xcodebuild -project "${TRAVIS_XCODE_PROJECT}" -scheme "${SCHEME}" -sdk "${SDK}" -destination "${DESTINATION}" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+      fi
+
+    - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
+    - sonar-scanner
+    
+
+    - git remote set-url origin git@github.com:SwiftAlgorithmClub/AGString.git
+    
+    # 개선이 필요합니다.
+    # https://github.com/mxcl/PromiseKit/blob/master/.travis.yml
+    # iOS, macOs, watch, tv 가 모두 성공했을 경우 실행이 필요합니다.
+    - if [ $TRAVIS_EVENT_TYPE == "cron" ] && [ $TRAVIS_BRANCH == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ PLATFORM == "iOS" ]; then
+      - echo "Increase a patch version"
+      - export TAG_VERSION=$(git describe --abbrev=0 --tags)
+      - export NEW_TAG_VERSION=$(echo ${TAG_VERSION} | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
+       
+      - sed -e "s/\${version}/${NEW_TAG_VERSION}/" TemplatePodspec > AGString.podspec
+      - git tag -m "[Cron] Update podspec" $NEW_TAG_VERSION;
+      - git push --tags;
+      - pod lib lint --allow-warnings;
+      - pod trunk me --verbose;
+      - pod trunk push AGString.podspec;
+      - pod trunk me clean-sessions --all # Clear All Sessions
     fi
-
-  - xcodebuild clean -project "$TRAVIS_XCODE_PROJECT" -scheme "$SCHEME" | xcpretty
-  - sonar-scanner
-  
-  # # Run `pod lib lint` if specified
-  # - if [ $POD_LINT == "YES" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-  #     pod repo update > /dev/null;
-  #     travis_wait 60 pod lib lint --allow-warnings;
-  #   fi
-
-  
+    
 after_success:
   - codecov
-  
+
+    
 notifications:
   slack:
     rooms:
