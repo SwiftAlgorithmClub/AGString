@@ -92,7 +92,7 @@ script:
     # 개선이 필요합니다.
     # https://github.com/mxcl/PromiseKit/blob/master/.travis.yml
     # iOS, macOs, watch, tv 가 모두 성공했을 경우 실행이 필요합니다.
-    - if [ $TRAVIS_EVENT_TYPE == "cron" ] && [ $TRAVIS_BRANCH == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ PLATFORM == "iOS" ]; then
+    - if [ $TRAVIS_EVENT_TYPE == "cron" ] && [ $TRAVIS_BRANCH == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$PLATFORM" == "iOS" ]; then
       - echo "Increase a patch version"
       - export TAG_VERSION=$(git describe --abbrev=0 --tags)
       - export NEW_TAG_VERSION=$(echo ${TAG_VERSION} | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
